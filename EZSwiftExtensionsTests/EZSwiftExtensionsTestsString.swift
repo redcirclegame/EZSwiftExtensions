@@ -39,7 +39,7 @@ class EZSwiftExtensionsTestsString: XCTestCase {
         string = "  Hello how are you   "
         string.trim()
         XCTAssertEqual(string, "Hello how are you")
-
+        
         string = "  \t\t  Lets trim all the whitespace  \n \t  \n  "
         string.trim()
         XCTAssertEqual(string, "Lets trim all the whitespace")
@@ -65,8 +65,8 @@ class EZSwiftExtensionsTestsString: XCTestCase {
 
     func testContains() {
         XCTAssertTrue(string.contains("01"))
-        XCTAssertTrue(string.contains("01", compareOption: NSStringCompareOptions.AnchoredSearch))
-        XCTAssertFalse(string.contains("12", compareOption: NSStringCompareOptions.AnchoredSearch))
+        XCTAssertTrue(string.contains("01", compareOption: NSString.CompareOptions.anchoredSearch))
+        XCTAssertFalse(string.contains("12", compareOption: NSString.CompareOptions.anchoredSearch))
         XCTAssertFalse(string.contains("h"))
     }
 
@@ -77,7 +77,7 @@ class EZSwiftExtensionsTestsString: XCTestCase {
         XCTAssertNotNil(string.toFloat())
         XCTAssertEqual(String(10.253, precision: 2), "10.25")
         XCTAssertEqual(String(10.257, precision: 2), "10.26")
-        XCTAssertTrue(string.toNSString.isKindOfClass(NSString.self))
+        XCTAssertTrue(string.toNSString.isKind(of: NSString.self))
     }
 
     func testIsIncludeEmoji() {
@@ -87,7 +87,7 @@ class EZSwiftExtensionsTestsString: XCTestCase {
         string = "The greatest respect that writers can give their readers is to not write anything that they expect"
         XCTAssertFalse(string.includesEmoji())
     }
-
+    
     func testBase64Conversion() {
         let string = "EZSwiftExtensions is Awesome"
         let base64String = "RVpTd2lmdEV4dGVuc2lvbnMgaXMgQXdlc29tZQ"
@@ -96,7 +96,7 @@ class EZSwiftExtensionsTestsString: XCTestCase {
         let newString = String(base64: base64String) ?? ""
         XCTAssertEqual(newString, string)
     }
-
+    
     func testStatsFuncs() {
         let string = "EZSwiftExtensions is Awesome, let's revolutionize Swift\nI love it.\n"
         XCTAssertEqual(string.countofWords, 10)
